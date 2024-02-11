@@ -11,7 +11,7 @@ public class ExceptionUtil {
             TelegramApiException e
     ) {
         return new TelegramBotRegistrationFailedException(
-                String.format(ExceptionMessage.TELEGRAM_BOT_REGISTRATION_FAILED), e
+                ExceptionMessage.TELEGRAM_BOT_REGISTRATION_FAILED, e
         );
     }
 
@@ -19,7 +19,7 @@ public class ExceptionUtil {
             TelegramApiException e
     ) {
         return new TelegramBotsApiInstantiationFailedException(
-                String.format(ExceptionMessage.TELEGRAM_BOTS_API_INSTANTIATION_FAILED), e
+                ExceptionMessage.TELEGRAM_BOTS_API_INSTANTIATION_FAILED, e
         );
     }
 
