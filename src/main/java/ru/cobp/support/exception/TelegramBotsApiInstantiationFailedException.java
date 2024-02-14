@@ -1,4 +1,4 @@
-package ru.cobp.chatbot.exception;
+package ru.cobp.support.exception;
 
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 

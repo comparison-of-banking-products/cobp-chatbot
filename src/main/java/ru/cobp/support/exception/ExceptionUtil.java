@@ -1,4 +1,4 @@
-package ru.cobp.chatbot.exception;
+package ru.cobp.support.exception;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,14 @@ public class ExceptionUtil {
     ) {
         return new TelegramBotsApiInstantiationFailedException(
                 ExceptionMessage.TELEGRAM_BOTS_API_INSTANTIATION_FAILED, e
+        );
+    }
+
+    public static TelegramBotSendMessageFailedException getTelegramBotSendMessageFailedException(
+            TelegramApiException e
+    ) {
+        return new TelegramBotSendMessageFailedException(
+                ExceptionMessage.TELEGRAM_BOT_SEND_MESSAGE_FAILED, e
         );
     }
 
