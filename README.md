@@ -1,2 +1,1 @@
-# cobp-chatbot
-Chatbot for User support
+# support-service
