@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.cobp.support.common.WebsocketConstants;
@@ -42,9 +41,7 @@ public class SupportChatbotImpl extends TelegramLongPollingBot implements Suppor
 
     @Override
     public void onUpdateReceived(Update update) {
-        Message message = update.getMessage();
-        System.out.println(message.getText());
-        this.sendSupportResponse(message.getText());
+        this.sendSupportResponse(update.getMessage().getText());
     }
 
     private void sendSupportResponse(String message) {
@@ -56,8 +53,12 @@ public class SupportChatbotImpl extends TelegramLongPollingBot implements Suppor
         return botProperties.username();
     }
 
-    private String getSupportChatId() {
-        return botProperties.chatId();
+    private String getSupportGroupId() {
+        return botProperties.groupId();
+    }
+
+    private Integer getSupportTopicId() {
+        return botProperties.topicId();
     }
 
     private void sendMessage(SendMessage message) {
@@ -75,8 +76,9 @@ public class SupportChatbotImpl extends TelegramLongPollingBot implements Suppor
     @Override
     public void sendSupportRequest(SupportRequestDto dto) {
         SendMessage message = new SendMessage();
-        message.setChatId(this.getSupportChatId());
+        message.setChatId(this.getSupportGroupId());
         message.setText(this.buildSupportRequestText(dto));
+        message.setMessageThreadId(this.getSupportTopicId());
         this.sendMessage(message);
     }
 
