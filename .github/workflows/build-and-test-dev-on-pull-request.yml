@@ -17,7 +17,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'corretto'
-          java-package: 'jre'
+          java-package: jre
           cache: maven
 
       - name: Build with Maven
