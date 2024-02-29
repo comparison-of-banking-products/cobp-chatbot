@@ -14,11 +14,11 @@ public record TelegramBotProperties(
         @Value("${telegram.bot.token}")
         String token,
 
-        @Value("${telegram.bot.group.id}")
-        String groupId,
+        @Value("${telegram.bot.chat.id}")
+        Long chatId,
 
-        @Value("${telegram.bot.topic.id}")
-        Integer topicId
+        @Value("${telegram.bot.thread.id}")
+        Integer threadId
 
 ) {
 }

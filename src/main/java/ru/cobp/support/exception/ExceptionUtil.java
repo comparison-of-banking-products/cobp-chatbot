@@ -31,4 +31,10 @@ public class ExceptionUtil {
         );
     }
 
+    public static SupportReplyEmailParseFailedException getSupportReplyEmailParseFailedException(String text) {
+        return new SupportReplyEmailParseFailedException(
+                String.format("%s, [%s]", ExceptionMessage.SUPPORT_REPLY_EMAIL_PARSE_FAILED, text)
+        );
+    }
+
 }

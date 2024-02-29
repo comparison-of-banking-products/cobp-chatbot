@@ -8,12 +8,14 @@ public class WebsocketConstants {
 
     public static final String STOMP_ENDPOINT = "/ws";
 
-    public static final String APP_DESTINATION_PREFIX = "/app";
+    public static final String APP_DESTINATION = "/app";
 
-    public static final String BROKER_DESTINATION_PREFIX = "/topic";
+    public static final String TOPIC_DESTINATION = "/topic";
 
-    public static final String SUPPORT_SUFFIX = "/support";
+    public static final String QUEUE_DESTINATION = "/queue";
 
-    public static final String SUPPORT_DESTINATION = BROKER_DESTINATION_PREFIX + SUPPORT_SUFFIX;
+    public static final String SUPPORT_DESTINATION = "/support";
+
+    public static final String QUEUE_SUPPORT_DESTINATION = QUEUE_DESTINATION + SUPPORT_DESTINATION;
 
 }
