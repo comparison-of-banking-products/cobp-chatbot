@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class WebsocketConstants {
+public class WebSocketConstants {
 
     public static final String STOMP_ENDPOINT = "/ws";
 
@@ -17,5 +17,9 @@ public class WebsocketConstants {
     public static final String SUPPORT_DESTINATION = "/support";
 
     public static final String QUEUE_SUPPORT_DESTINATION = QUEUE_DESTINATION + SUPPORT_DESTINATION;
+
+    public static final String CONNECT_DESTINATION = "/connect";
+
+    public static final String SUPPORT_CONNECT_DESTINATION = SUPPORT_DESTINATION + CONNECT_DESTINATION;
 
 }
