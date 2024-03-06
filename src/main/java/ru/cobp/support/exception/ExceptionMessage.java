@@ -14,4 +14,6 @@ public class ExceptionMessage {
 
     public static final String SUPPORT_REPLY_EMAIL_PARSE_FAILED = "Support reply email parse failed";
 
+    public static final String SEND_MAIL_MESSAGE_FAILED = "Send mail message failed";
+
 }
