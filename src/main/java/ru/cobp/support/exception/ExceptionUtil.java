@@ -2,6 +2,7 @@ package ru.cobp.support.exception;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.mail.MailException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -35,6 +36,10 @@ public class ExceptionUtil {
         return new SupportReplyEmailParseFailedException(
                 String.format("%s, [%s]", ExceptionMessage.SUPPORT_REPLY_EMAIL_PARSE_FAILED, text)
         );
+    }
+
+    public static SendMailMessageFailedException getSendMailMessageFailedException(MailException e) {
+        return new SendMailMessageFailedException(ExceptionMessage.SEND_MAIL_MESSAGE_FAILED, e);
     }
 
 }

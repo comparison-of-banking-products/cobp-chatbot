@@ -7,8 +7,8 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import ru.cobp.support.common.CommonConstants;
 import ru.cobp.support.common.WebSocketConstants;
-import ru.cobp.support.dto.SupportRequestDto;
-import ru.cobp.support.dto.UserSupportDto;
+import ru.cobp.support.dto.UserSupportRequestDto;
+import ru.cobp.support.dto.UserDto;
 import ru.cobp.support.service.SupportService;
 
 @Controller
@@ -18,8 +18,8 @@ public class SupportController {
     private final SupportService supportService;
 
     @MessageMapping(WebSocketConstants.SUPPORT_CONNECT_DESTINATION)
-    public void handleUserSupportConnect(
-            @Payload UserSupportDto dto,
+    public void handleUserConnectionToSupport(
+            @Payload UserDto dto,
             SimpMessageHeaderAccessor headerAccessor
     ) {
         var sessionAttributes = headerAccessor.getSessionAttributes();
@@ -28,12 +28,12 @@ public class SupportController {
             sessionAttributes.put(CommonConstants.EMAIL, dto.email());
         }
 
-        supportService.notifyUserConnect(dto);
+        supportService.notifyAboutUserConnection(dto);
     }
 
     @MessageMapping(WebSocketConstants.SUPPORT_DESTINATION)
-    public void sendSupportRequest(
-            @Payload SupportRequestDto dto
+    public void handleUserSupportRequest(
+            @Payload UserSupportRequestDto dto
     ) {
         supportService.sendSupportRequest(dto);
     }

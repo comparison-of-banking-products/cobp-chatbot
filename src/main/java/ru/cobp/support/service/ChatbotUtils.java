@@ -1,10 +1,10 @@
-package ru.cobp.support.bot;
+package ru.cobp.support.service;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import ru.cobp.support.dto.AgreementStatus;
-import ru.cobp.support.dto.SupportRequestDto;
-import ru.cobp.support.dto.UserSupportDto;
+import ru.cobp.support.dto.UserDto;
+import ru.cobp.support.dto.UserSupportRequestDto;
 import ru.cobp.support.exception.ExceptionUtil;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ChatbotUtils {
 
-    public static String buildUserSupportConnectText(UserSupportDto dto) {
+    public static String buildUserSupportConnectText(UserDto dto) {
         StringJoiner sj = new StringJoiner(System.lineSeparator());
         sj.add(buildUserSupportConnectHeaderMessage());
         sj.add(buildSupportRequestNameRow(dto.name()));
@@ -22,7 +22,7 @@ public class ChatbotUtils {
         return sj.toString();
     }
 
-    public static String buildSupportRequestText(SupportRequestDto dto) {
+    public static String buildSupportRequestText(UserSupportRequestDto dto) {
         StringJoiner sj = new StringJoiner(System.lineSeparator());
         sj.add(buildSupportRequestHeaderMessage());
         sj.add(buildSupportRequestNameRow(dto.name()));
@@ -31,7 +31,7 @@ public class ChatbotUtils {
         return sj.toString();
     }
 
-    public static String buildUserSupportDisconnectText(UserSupportDto dto) {
+    public static String buildUserSupportDisconnectText(UserDto dto) {
         StringJoiner sj = new StringJoiner(System.lineSeparator());
         sj.add(buildUserSupportDisconnectHeaderMessage());
         sj.add(buildSupportRequestNameRow(dto.name()));
@@ -77,11 +77,11 @@ public class ChatbotUtils {
 
     public static String parseSupportRequestReplyEmail(String text) {
         List<String> rows = text.lines().toList();
-        if (rows.size() != 5) {
+        if (rows.size() != 4) {
             throw ExceptionUtil.getSupportReplyEmailParseFailedException(text);
         }
 
-        String emailRow = rows.get(3);
+        String emailRow = rows.get(2);
         if (!emailRow.contains("email")) {
             throw ExceptionUtil.getSupportReplyEmailParseFailedException(emailRow);
         }

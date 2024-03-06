@@ -10,4 +10,6 @@ public class CommonConstants {
 
     public static final String EMAIL = "email";
 
+    public static final String TELEGRAM_MESSAGE_PARSE_MODE = "html";
+
 }
