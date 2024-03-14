@@ -22,7 +22,9 @@ public class WebSocketEventListener {
         if (sessionAttributes != null) {
             String user = (String) sessionAttributes.get(CommonConstants.NAME);
             String email = (String) sessionAttributes.get(CommonConstants.EMAIL);
-            supportService.notifyAboutUserDisconnection(new UserDto(user, email, null));
+            if (user != null && email != null) {
+                supportService.notifyAboutUserDisconnection(new UserDto(user, email, null));
+            }
         }
     }
 
